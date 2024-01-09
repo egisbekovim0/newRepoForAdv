@@ -1,9 +1,5 @@
 package models
 
-import (
-	"time"
-)
-
 type Books struct {
 	ID        uint   `gorm:"primary_key;autoIncrement" json:"id"`
 	Author    *string `json:"author"`
@@ -13,15 +9,6 @@ type Books struct {
 	User      Users  `json:"user" gorm:"foreignKey:UserID"`
  }
 
-type Users struct {
-	ID        uint   `gorm:"primary key;autoIncrement" json:"id"`
-	Name      *string `json:"name"`
-	Email     *string `json:"email"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
-	Age       int    `json:"age"`
-	Books     []Books `json:"books" gorm:"foreignKey:UserID"`
-}
 
 // func MigrateBooks(db *gorm.DB)error{
 // 	err := db.AutoMigrate(&Books{} , &Users{})

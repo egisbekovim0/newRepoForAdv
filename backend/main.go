@@ -189,7 +189,7 @@ func (r *Repository) UpdateBook(context *fiber.Ctx) error {
 		return nil
 	}
 
-	// Retrieve the book by ID
+
 	err := r.DB.Where("id = ?", id).First(bookModel).Error
 	if err != nil {
 		context.Status(http.StatusBadRequest).JSON(&fiber.Map{
@@ -198,8 +198,8 @@ func (r *Repository) UpdateBook(context *fiber.Ctx) error {
 		return err
 	}
 
-	// Parse the request body to update the book
-	newBook := &models.Books{} // Use the correct struct name here
+
+	newBook := &models.Books{} 
 	err = context.BodyParser(&newBook)
 	if err != nil {
 		context.Status(http.StatusUnprocessableEntity).JSON(
@@ -207,13 +207,13 @@ func (r *Repository) UpdateBook(context *fiber.Ctx) error {
 		return err
 	}
 
-	// Update the book fields
+
 	bookModel.Author = newBook.Author
 	bookModel.Title = newBook.Title
 	bookModel.Publisher = newBook.Publisher
 	bookModel.UserID = newBook.UserID
 
-	// Save the updated book
+
 	err = r.DB.Save(bookModel).Error
 	if err != nil {
 		context.Status(http.StatusBadRequest).JSON(
@@ -265,7 +265,7 @@ func (r *Repository) GetBooksByUserID(context *fiber.Ctx) error {
         return nil
     }
 
-    // Retrieve books with the specified user ID
+
     err := r.DB.Where("user_id = ?", id).Find(userBooks).Error
     if err != nil {
         context.Status(http.StatusBadRequest).JSON(&fiber.Map{

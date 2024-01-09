@@ -16,9 +16,9 @@ To set up the project, follow these steps:
 `go get -u github.com/gofiber/fiber/v2` <br>
 `go get -u github.com/joho/godotenv` <br>
 
-3. **Set Up the Environment**: In Visual Studio Code, create the folders 'models', 'storage', and a '.env' file. In the '.env' file, include all your database details. Then, create a 'main.go' file.
-4. **Develop Models and Storage**: In the 'models' folder, start by creating your book and user models. You can choose to have both models in one file or separate them. In the 'storage' folder, create 'postgres.go' for managing database connections.
-
+3. **Set Up the Environment**: In Visual Studio Code, create the folders 'models', 'storage', and a '.env' file whihch include all database details. Then, create a 'main.go' file.
+4. **Develop Models and Storage**: In the 'models' folder, start by creating your book and user models. You can choose to have both models in one file or separate them. In the 'storage' folder, create 'postgres.go' for managing database connections. (we can start with models folder and create our books model and user model, here we have both models in one file but we can write them separately in the storage we have postgres.go to make connection)
+   
 ## Key Technologies
 - **Fiber**: A Go web framework for swiftly building HTTP servers. [Fiber GitHub Repository](https://github.com/gofiber/fiber)
 - **Gorm**: An ORM for Go, used for database operations. [Gorm Official Website](https://gorm.io/)

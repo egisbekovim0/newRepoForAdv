@@ -1,6 +1,8 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"time"
+)
 
 type Books struct {
 	ID        uint   `gorm:"primary_key;autoIncrement" json:"id"`
@@ -15,8 +17,8 @@ type Users struct {
 	ID        uint   `gorm:"primary key;autoIncrement" json:"id"`
 	Name      *string `json:"name"`
 	Email     *string `json:"email"`
-	CreatedAt *gorm.DeletedAt `json:"created_at"`
-	UpdatedAt *gorm.DeletedAt `json:"updated_at"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 	Age       int    `json:"age"`
 	Books     []Books `json:"books" gorm:"foreignKey:UserID"`
 }

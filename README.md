@@ -4,14 +4,14 @@
 This web application is expertly crafted for the efficient management of a comprehensive book collection and user profiles. It's an all-encompassing solution that allows users to seamlessly add, edit, and delete books from the collection. Additionally, users can create and manage their own profiles, ensuring a personalized and user-friendly experience.
 
 ## Team
-Developed by the talented trio: **Amangeldi Diyar, Egisbekov Erlan, and Raisov Raiymbek** - this application represents a collaborative effort combining expertise and passion for technology.
+Developed by the talented trio: **Amangeldi Diyar, Egisbekov Erlan, Garifullin Ernur and Raisov Raiymbek** - this application represents a collaborative effort combining expertise and passion for technology.
 
 ## Getting Started
 To set up the project, follow these steps:
 
 1. **Create Project Folder**: Begin by creating your project folder and initialize it using Go modules:
 `go mod init github` <br>
-2. **Install Dependencies**: Next, install the necessary Go packages:
+2. **Install Dependencies**: Next, install the necessary Go packages: <br>
 `go get gorm.io`<br>
 `go get -u github.com/gofiber/fiber/v2` <br>
 `go get -u github.com/joho/godotenv` <br>

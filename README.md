@@ -4,17 +4,17 @@
 This web application is expertly crafted for the efficient management of a comprehensive book collection and user profiles. It's an all-encompassing solution that allows users to seamlessly add, edit, and delete books from the collection. Additionally, users can create and manage their own profiles, ensuring a personalized and user-friendly experience.
 
 ## Team
-Developed by the talented trio: Amangeldi Diyar, Egisbekov Erlan, and Raisov Raiymbek, this application represents a collaborative effort combining expertise and passion for technology.
+Developed by the talented trio: **Amangeldi Diyar, Egisbekov Erlan, and Raisov Raiymbek** - this application represents a collaborative effort combining expertise and passion for technology.
 
 ## Getting Started
 To set up the project, follow these steps:
 
 1. **Create Project Folder**: Begin by creating your project folder and initialize it using Go modules:
-`go mod init github`
+`go mod init github` <br>
 2. **Install Dependencies**: Next, install the necessary Go packages:
-`go get gorm.io`
-`go get -u github.com/gofiber/fiber/v2`
-`go get -u github.com/joho/godotenv`
+`go get gorm.io`<br>
+`go get -u github.com/gofiber/fiber/v2` <br>
+`go get -u github.com/joho/godotenv` <br>
 
 3. **Set Up the Environment**: In Visual Studio Code, create the folders 'models', 'storage', and a '.env' file. In the '.env' file, include all your database details. Then, create a 'main.go' file.
 4. **Develop Models and Storage**: In the 'models' folder, start by creating your book and user models. You can choose to have both models in one file or separate them. In the 'storage' folder, create 'postgres.go' for managing database connections.

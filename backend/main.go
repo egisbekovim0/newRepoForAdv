@@ -281,6 +281,7 @@ func (r *Repository) GetBooksByUserID(context *fiber.Ctx) error {
     return nil
 }
 
+
 func (r *Repository) SetupRoutes(app *fiber.App) {
 	api := app.Group("/api")
 	api.Post("/create_books", r.CreateBook)
@@ -293,6 +294,7 @@ func (r *Repository) SetupRoutes(app *fiber.App) {
 	api.Get("/users", r.GetUsers)
 	api.Put("/update_book/:id", r.UpdateBook)
 	api.Get("/get_books_by_user/:id", r.GetBooksByUserID)
+	
 }
 
 func main() {
@@ -300,6 +302,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	
 	config := &storage.Config{
 		Host:     os.Getenv("DB_HOST"),
 		Port:     os.Getenv("DB_PORT"),
@@ -324,6 +327,9 @@ func main() {
 	}
 
 	app := fiber.New()
+	app.Static("/", "../frontend")
 	r.SetupRoutes(app)
+	
+
 	app.Listen(":8080")
 }

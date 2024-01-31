@@ -1,20 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
+
 <body class="py-5">
 
-<div class="container py-5">
-    <div class="row">
-        <div class="buttons offset-3 col-6 d-flex justify-content-around">
-            <a href="./books.html" class="btn btn-primary">All books</a>
-            <a href="./booksByUserId.html" class="btn btn-primary">Books by user id</a>
+    <div class="container">
+        <div class="row">
+            <div class="offset-3 col-6">
+                <form id="filterForm" class="d-flex">
+                    <div class="input-group flex-nowrap me-1">
+                        <span class="input-group-text" id="addon-wrapping">Author</span>
+                        <input type="text" name="author" class="form-control" aria-label="Author"
+                            aria-describedby="addon-wrapping">
+                    </div>
+                    <div class="input-group flex-nowrap me-1">
+                        <label class="input-group-text" for="sortOrder">Sort Order</label>
+                        <select class="form-select" id="sortOrder" name="sortOrder">
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                    <button type="button" id="applyFilter" class="btn btn-primary">Apply Filter</button>
+                    <button type="button" id="clearFilter" class="btn btn-secondary">Clear Filter</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="container p-5">
+        <div class="offset-1 col-10">
+            <table class="table col-7 text-center mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col" data-sort="id" class="ascending">ID</th>
+                        <th scope="col" data-sort="author">Author</th>
+                        <th scope="col" data-sort="title">Title</th>
+                        <th scope="col" data-sort="publisher">Publisher</th>
+                        <th scope="col" data-sort="user_id">UserID</th>
+                    </tr>
+                </thead>
+                <tbody id="bookContent" class="content">
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between mt-3">
+                <button type="button" id="prevPage" class="btn btn-primary">Previous Page</button>
+                <span id="currentPage">Page 1</span>
+                <button type="button" id="nextPage" class="btn btn-primary">Next Page</button>
+            </div>
+            <div class="alert alert-secondary no-data text-center mt-3" role="alert">
+                No books were found
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const filterForm = document.getElementById('filterForm');
+        const applyFilterButton = document.getElementById('applyFilter');
+        const clearFilterButton = document.getElementById('clearFilter');
+        const bookContent = document.getElementById('bookContent');
+        const noData = document.querySelector('.no-data');
+        const tableHead = document.querySelector('thead');
+        const prevPageButton = document.getElementById('prevPage');
+        const nextPageButton = document.getElementById('nextPage');
+        const currentPageSpan = document.getElementById('currentPage');
+        let currentPage = 1;
+
+        function createRow(ID, Author, Title, Publisher, UserID) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${ID}</td>
+                <td>${Author}</td>
+                <td>${Title}</td>
+                <td>${Publisher}</td>
+                <td>${UserID}</td>
+            `;
+            return row;
+        }
+
+        function fetchBooks(filter = {}, sortBy = '', sortOrder = 'asc', page = 1, pageSize = 5) {
+            const queryParams = new URLSearchParams({ ...filter, sortBy, sortOrder, page }).toString();
+            const url = `http://localhost:8080/api/books?${queryParams}`;
+
+            fetch(url)
+                .then(res => res.json())
+                .then(response => {
+                    const data = response.data;
+                    bookContent.innerHTML = '';
+
+                    if (Array.isArray(data)) {
+                        data.forEach(({ id, author, title, publisher, user_id }) => {
+                            bookContent.append(createRow(id, author, title, publisher, user_id));
+                        });
+
+                        if (data.length !== 0) {
+                            noData.style.display = 'none';
+                        } else {
+                            noData.style.display = 'block';
+                        }
+                    } else {
+                        console.error('Error fetching books: Data is not an array', data);
+                    }
+                })
+                .catch(error => console.error('Error fetching books:', error));
+        }
+
+        applyFilterButton.addEventListener('click', function () {
+            const formData = new FormData(filterForm);
+            const filter = Object.fromEntries(formData.entries());
+            currentPage = 1;
+            fetchBooks(filter);
+        });
+
+        clearFilterButton.addEventListener('click', function () {
+            filterForm.reset();
+            currentPage = 1;
+            fetchBooks();
+        });
+
+        tableHead.addEventListener('click', function (e) {
+            if (e.target.tagName === 'TH') {
+                const column = e.target.dataset.sort;
+                const currentOrder = e.target.classList.contains('ascending') ? 'desc' : 'asc';
+                tableHead.querySelectorAll('th').forEach(th => th.classList.remove('ascending', 'descending'));
+                e.target.classList.add(currentOrder === 'asc' ? 'ascending' : 'descending');
+                fetchBooks({}, column, currentOrder, currentPage);
+            }
+        });
+
+        applyFilterButton.addEventListener('click', function () {
+            const formData = new FormData(filterForm);
+            const filter = Object.fromEntries(formData.entries());
+            const sortOrder = document.getElementById('sortOrder').value;
+            currentPage = 1;
+            fetchBooks(filter, '', sortOrder, currentPage);
+        });
+
+        clearFilterButton.addEventListener('click', function () {
+            filterForm.reset();
+            currentPage = 1;
+            fetchBooks();
+        });
+
+        prevPageButton.addEventListener('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                currentPageSpan.textContent = `Page ${currentPage}`;
+                const formData = new FormData(filterForm);
+                const filter = Object.fromEntries(formData.entries());
+                const sortOrder = document.getElementById('sortOrder').value;
+                fetchBooks(filter, '', sortOrder, currentPage);
+            }
+        });
+
+        nextPageButton.addEventListener('click', function () {
+            currentPage++;
+            currentPageSpan.textContent = `Page ${currentPage}`;
+            const formData = new FormData(filterForm);
+            const filter = Object.fromEntries(formData.entries());
+            const sortOrder = document.getElementById('sortOrder').value;
+            fetchBooks(filter, '', sortOrder, currentPage);
+        });
+
+        fetchBooks({}, '', '', currentPage);
+    </script>
 
 </body>
+
 </html>

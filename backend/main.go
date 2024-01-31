@@ -9,7 +9,8 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
-
+	"github.com/gofiber/fiber/v2/middleware/cors"
+	"strconv"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
@@ -136,27 +137,54 @@ func (r *Repository) DeleteUser(context *fiber.Ctx) error {
 	return nil
 }
 
+
+const defaultPageSize = 5
+
 func (r *Repository) GetBooks(context *fiber.Ctx) error {
-	bookModels := &[]models.Books{}
+    page, err := strconv.Atoi(context.Query("page", "1"))
+    if err != nil || page <= 0 {
+        page = 1
+    }
 
-	err := r.DB.Preload("User").Find(bookModels).Error
-	if err != nil {
-		r.Logger.WithError(err).Error("failed to fetch books")
-		context.Status(http.StatusBadRequest).JSON(
-			&fiber.Map{"message": "could not get books"})
-		return err
-	}
+    pageSize, err := strconv.Atoi(context.Query("pageSize", strconv.Itoa(defaultPageSize)))
+    if err != nil || pageSize <= 0 {
+        pageSize = defaultPageSize
+    }
 
-	r.Logger.WithFields(logrus.Fields{
-		"bookCount": len(*bookModels),
-	}).Info("books fetched successfully")
+    authorFilter := context.Query("author")
+    titleFilter := context.Query("title")
+    sortBy := context.Query("sortBy", "id")
+    sortOrder := context.Query("sortOrder", "asc")
 
-	context.Status(http.StatusOK).JSON(&fiber.Map{
-		"message": "books fetched good ",
-		"data":    bookModels,
-	})
-	return nil
+    bookModels := &[]models.Books{}
+
+    query := r.DB.Model(&models.Books{})
+
+    if authorFilter != "" {
+        query = query.Where("author LIKE ?", "%"+authorFilter+"%")
+    }
+
+    if titleFilter != "" {
+        query = query.Where("title LIKE ?", "%"+titleFilter+"%")
+    }
+
+    query = query.Order(fmt.Sprintf("%s %s", sortBy, sortOrder)).
+        Limit(pageSize).Offset((page - 1) * pageSize).
+        Preload("User").Find(bookModels)
+
+    if err := query.Error; err != nil {
+        context.Status(http.StatusBadRequest).JSON(&fiber.Map{"message": "could not get books"})
+        return err
+    }
+
+    context.Status(http.StatusOK).JSON(&fiber.Map{
+        "message": "books fetched successfully",
+        "data":    bookModels,
+    })
+
+    return nil
 }
+
 
 func (r *Repository) GetUsers(context *fiber.Ctx) error {
 	userModels := &[]models.Users{}
@@ -382,6 +410,11 @@ func main() {
 	app := fiber.New(fiber.Config{
 		ReadTimeout: 3 * time.Second,
 	})
+	app.Use(cors.New(cors.Config{
+        AllowOrigins: "*",
+        AllowMethods: "GET,POST,PUT,DELETE",
+        AllowHeaders: "Origin, Content-Type, Accept",
+    }))
 	app.Static("/", "../frontend")
 
 	app.Use(LoggerMiddleware(logger))

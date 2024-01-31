@@ -4,6 +4,7 @@ go 1.21.2
 
 require (
 	github.com/gofiber/fiber/v2 v2.51.0
+	github.com/sirupsen/logrus v1.9.3
 	gorm.io/driver/postgres v1.5.4
 )
 

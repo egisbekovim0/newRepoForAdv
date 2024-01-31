@@ -7,8 +7,9 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	"time"
 	"syscall"
+	"time"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
@@ -379,20 +380,19 @@ func main() {
 	}
 
 	app := fiber.New(fiber.Config{
-		ReadTimeout: 3 * time.Second, 
+		ReadTimeout: 3 * time.Second,
 	})
 
 	app.Use(LoggerMiddleware(logger))
 	r.SetupRoutes(app)
 
-
 	stopChan := make(chan os.Signal, 1)
 	signal.Notify(stopChan, os.Interrupt, syscall.SIGTERM, syscall.SIGKILL, syscall.SIGHUP)
-    go func() {
-        if err := app.Listen(":8080"); err != nil {
-            logger.WithError(err).Fatal("Error starting server")
-        }
-    }()
+	go func() {
+		if err := app.Listen(":8080"); err != nil {
+			logger.WithError(err).Fatal("Error starting server")
+		}
+	}()
 
 	fmt.Println("Server is running on :8080")
 	fmt.Println("Process id is", os.Getpid())

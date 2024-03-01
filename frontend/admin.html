@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="../css/headers.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/customMenu.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li class="list active">
+                <a href="/">
+                    <span class="icon">
+                        <img src="../assets3/home.png" class="mb-3" width="30" height="30" alt="">
+                    </span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="/books">
+                    <span class="icon">
+                        <img src="../assets3/jogging.png" class="mb-3" width="30" height="30" alt="">
+                    </span>
+                    <span class="text">Books</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="/profile">
+                    <span class="icon">
+                        <img src="../assets3/exercise.png" class="mb-3" width="30" height="30" alt="">
+                    </span>
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="/shop">
+                    <span class="icon">
+                        <img src="../assets3/store.png" class="mb-3" width="30" height="30" alt="">
+                    </span>
+                    <span class="text">Store</span>
+                </a>
+            </li>
+            <li class="list">
+              <a href="/stats">
+                  <span class="icon">
+                    <img src="../assets3/heart-rate.png" class="mb-3" width="30" height="30" alt="">
+                  </span>
+                  <span class="text">Stats</span>
+              </a>
+            </li>
+  
+                <li class="list">
+                  <a href="/settings">
+                      <span class="icon">
+                          <img src="../assets3/settingsIcon.png" class="mb-3" width="30" height="30" alt="">
+                      </span>
+                      <span class="text">Settings</span>
+                  </a>
+                </li>
+            </ul>
+    
+            <div class="text-end">
+              <a href="/login"><button type="button" class="custom-btn me-2">Login</button></a>
+              <a href="/register"><button type="button" class="custom-btn">Signup</button></a>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+    <main class="container mt-5">
+        <h1 class="mb-4">Admin Page</h1>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="bg-dark text-white">
+                    <tr>
+                     
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Email delivery</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range .users}}
+                        <tr>
+                            <td>{{.Name}}</td>
+                            <td>{{.Email}}</td>
+                            <td>Role</td>
+                            <td><button class="btn btn-danger btn-sm" onclick="delivery('{{.ID}}', '{{.Email}}')">Deliver</button></td>
+                        </tr>
+                    {{end}}
+            
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <footer class="mt-5 text-center">
+        <p>Yegisbekov Yerlan | SE-2202</p>
+    </footer>
+
+    <script>
+        async function delivery(userId, userEmail) {
+            try {
+                const response = await fetch(`/sendEmail`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ to_email: userEmail }),
+                });
+
+                if (response.ok) {
+                    console.log(`User with ID ${userId} delivered successfully.`);
+                    window.location.reload();
+                } else {
+                    console.error(`Failed to deliver to user with ID ${userId}.`);
+                }
+            } catch (error) {
+                console.error('Error delivering email:', error);
+            }
+        }
+
+    </script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

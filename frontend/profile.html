@@ -20,7 +20,7 @@
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li class="list active">
-              <a href="/">
+              <a href="/admin">
                   <span class="icon">
                       <img src="../assets3/home.png" class="mb-3" width="30" height="30" alt="">
                   </span>
@@ -59,16 +59,6 @@
                 <span class="text">Stats</span>
             </a>
           </li>
-          {{if eq user.Role "admin"}}
-                            <li class="list">
-                                <a href="/admin">
-                                    <span class="icon">
-                                        <img src="../assets3/adminka.png" class="mb-3" width="30" height="30" alt="">
-                                    </span>
-                                    <span class="text">Admin</span>
-                                </a>
-                            </li>
-           {{end}}
 
               <li class="list">
                 <a href="/settings">
@@ -96,9 +86,9 @@
             <hr>
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title"><span id="username">Name: {{if user}} {{.Name}} {{else}} N/A {{end}}</span></h4>
-                <p class="card-text"><span id="email">Email: {{if user}} {{.Email}} {{else}} N/A {{end}}</span></p>
-                <p class="card-text"><span id="email">Role: {{if user}} {{.Role}} {{else}} N/A {{end}}</span></p>
+                <h4 class="card-title"><span id="username">Name: {{.user.Name}}</span></h4>
+				        <p class="card-text"><span id="email">Email: {{.user.Email}}</span></p>
+                <p class="card-text"><span id="email">Role: </span></p>
             </div>
             </div>
           </div>

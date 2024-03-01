@@ -20,6 +20,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 	"github.com/yerlan/go-fiber-postgres/models"
+
 	"github.com/yerlan/go-fiber-postgres/storage"
 	"gorm.io/gorm"
 	"errors"
@@ -33,6 +34,7 @@ type Book struct {
 }
 
 type User struct {
+	ID uint `json:id`
 	Name  string `json:"name"`
 	Email string `json:"email"`
 	Role string `json:"role"`
@@ -73,17 +75,47 @@ func (r *Repository) ProfileHandler(context *fiber.Ctx) error {
         return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to parse token claims"})
     }
 
+	fmt.Println(claims)
+
     user := User{
         Name:  (*claims)["name"].(string),
         Email: (*claims)["email"].(string),
         // Role:  (*claims)["role"].(string),
         // Add other user information as needed
     }
+	fmt.Println(user)
+
 
     // Render the profile page with user data using HTML template
     return context.Render("profile", fiber.Map{"user": user})
 }
 
+
+
+func (r *Repository) AdminHandler(context *fiber.Ctx) error {
+    // Check if the user is authenticated
+ 
+    users, err := r.GetAllUsers()
+	
+    if err != nil {
+        return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to fetch users"})
+    }
+
+    // Render the admin page with the list of users
+    return context.Render("admin", fiber.Map{"users": users})
+}
+
+func (r *Repository) GetAllUsers() ([]User, error) {
+    // Create a slice to store the users
+    var users []User
+
+    // Use GORM's Find method to fetch all users
+    if err := r.DB.Find(&users).Error; err != nil {
+        return nil, err
+    }
+
+    return users, nil
+}
 
 
 
@@ -136,6 +168,24 @@ func (r *Repository) sendWelcomeEmail(toEmail string) error {
     )
 
     return err
+}
+
+func (r *Repository) SendEmail(context *fiber.Ctx) error {
+    emailRequest := struct {
+        ToEmail string `json:"to_email"`
+    }{}
+
+	fmt.Println(emailRequest.ToEmail)
+
+    if err := context.BodyParser(&emailRequest); err != nil {
+        return context.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid request body"})
+    }
+
+    if err := r.sendWelcomeEmail(emailRequest.ToEmail); err != nil {
+        return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Error sending email"})
+    }
+
+    return context.Status(fiber.StatusOK).JSON(fiber.Map{"message": "Email sent successfully"})
 }
 
 func (r *Repository) Login(context *fiber.Ctx) error {
@@ -542,9 +592,11 @@ func (r *Repository) SetupRoutes(app *fiber.App) {
 	api.Post("/signup", r.Signup)
     api.Post("/login", r.Login)
 	app.Get("/profile", r.ProfileHandler)
-	protected := api.Use(Authenticate())
+	app.Get("/admin", r.AdminHandler)
+	app.Post("/sendEmail", r.SendEmail)
+	// protected := api.Use(Authenticate())
 
-	protected.Get("/books", r.ProtectedBooks)
+	// protected.Get("/books", r.ProtectedBooks)
 }
 var loge = logrus.New()
 
@@ -652,6 +704,19 @@ func main() {
     app.Get("/signup", func(c *fiber.Ctx) error {
         return c.SendFile("../frontend/signup.html")
     })
+
+	// for i := 0; i < 100; i++ {
+	// 	book := Book{}
+	// 	err := faker.FakeData(&book)
+	// 	if err != nil {
+	// 		log.Fatal(err)
+	// 	}
+
+	// 	if err := db.Create(&book).Error; err != nil {
+	// 		log.Fatal(err)
+	// 	}
+	// 	fmt.Printf("Added Book: %s\n", book.Title)
+	// }
 
 	// app.Get("/login", func(c *fiber.Ctx) error {
     //     return c.Render("login", nil)

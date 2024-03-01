@@ -49,11 +49,11 @@ type Repository struct {
 
 
 func (r *Repository) ProfileHandler(context *fiber.Ctx) error {
-    // Get the JWT token from the request
+    
     tokenString := context.Cookies("jwt")
 
     if tokenString == "" {
-        // Redirect to login page if no token is found
+        
         return context.Redirect("/api/login")
     }
 
@@ -76,7 +76,7 @@ func (r *Repository) ProfileHandler(context *fiber.Ctx) error {
     user := User{
         Name:  (*claims)["name"].(string),
         Email: (*claims)["email"].(string),
-        Role:  (*claims)["role"].(string),
+        // Role:  (*claims)["role"].(string),
         // Add other user information as needed
     }
 
@@ -177,7 +177,7 @@ func GenerateJWT(user *User) (string, error) {
     claims := token.Claims.(jwt.MapClaims)
     claims["email"] = user.Email
 	claims["name"] = user.Name
-	claims["role"] = user.Role
+	// claims["role"] = user.Role
 
     tokenString, err := token.SignedString([]byte("your-secret-key"))
     if err != nil {
@@ -623,10 +623,7 @@ func main() {
 		ProtectedResource: (*Repository).ProtectedBooks, 
 	}
 
-	engine := html.New("./views", ".html")
-
-
-  engine = html.NewFileSystem(http.Dir("./views"), ".html")
+	engine := html.NewFileSystem(http.Dir("../frontend"), ".html")
 
   // Reload the templates on each render, good for development
 	engine.Reload(true)
@@ -643,6 +640,26 @@ func main() {
 		Views: engine,
 		ReadTimeout: 3 * time.Second,
 	})
+
+	app.Get("/login", func(c *fiber.Ctx) error {
+        return c.SendFile("../frontend/signin.html")
+    })
+
+	// app.Get("/profile", func(c *fiber.Ctx) error {
+    //     return c.SendFile("../frontend/profile.html")
+    // })
+
+    app.Get("/signup", func(c *fiber.Ctx) error {
+        return c.SendFile("../frontend/signup.html")
+    })
+
+	// app.Get("/login", func(c *fiber.Ctx) error {
+    //     return c.Render("login", nil)
+    // })
+
+    // app.Get("/signup", func(c *fiber.Ctx) error {
+    //     return c.Render("signup", nil)
+    // })
 
 
 	app.Use(cors.New(cors.Config{

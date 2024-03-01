@@ -64,13 +64,13 @@
 
         <div class="text-end">
           <a href="/login"><button type="button" class="custom-btn me-2">Login</button></a>
-          <a href="/register"><button type="button" class="custom-btn">Sign-up</button></a>
+          <a href="/signup"><button type="button" class="custom-btn">Sign-up</button></a>
         </div>
       </div>
     </div>
   </header>
       <main class="form-signin w-100 m-auto mt-5">
-        <form id="signupForm" action="/api/user/signup" method="POST">
+        <form id="signupForm" action="/api/signup" method="POST">
           <h1 class="h3 mb-3 text-glow">You need to sign in to continue</h1>
 
           <div class="form-floating">
@@ -112,7 +112,7 @@
                   }
   
                   const result = await response.json();
-                  window.location.href = "/login";
+                  window.location.href = "/index.html";
                   console.log(result); 
     
                   } catch (error) {

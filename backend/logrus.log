@@ -82,3 +82,250 @@
 {"latency":3349916100,"level":"info","method":"POST","msg":"request processed","path":"/api/signup","status":200,"time":"2024-03-01T15:11:23+06:00"}
 {"latency":765595300,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T15:11:37+06:00"}
 {"latency":6958600,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T15:11:42+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:29:26+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T15:29:37+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/api/signup","status":401,"time":"2024-03-01T15:29:43+06:00"}
+{"latency":65587400,"level":"info","method":"GET","msg":"request processed","path":"/api/books","status":200,"time":"2024-03-01T15:29:49+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/login.html","status":200,"time":"2024-03-01T15:29:51+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:29:54+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:29:54+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:29:54+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:29:54+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:29:54+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:29:54+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:29:54+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:30:28+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/login.html","status":200,"time":"2024-03-01T15:30:42+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:31:31+06:00"}
+{"latency":28683600,"level":"info","method":"GET","msg":"request processed","path":"/api/books","status":200,"time":"2024-03-01T15:31:38+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:31:39+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:31:39+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:31:39+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:31:39+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:31:39+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:31:39+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:31:39+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:33:34+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:33:46+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:33:46+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:33:46+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:33:46+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:33:46+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:33:46+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:33:50+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:33:50+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:33:50+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:33:50+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:33:50+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:33:50+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:33:50+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:33:56+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:33:56+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:33:56+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:33:56+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:33:56+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:33:56+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:33:58+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:33:58+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:33:58+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:33:58+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:33:58+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:33:58+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:33:58+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:39:06+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:39:13+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:39:13+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:39:13+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:39:13+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:39:13+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:39:13+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:39:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:39:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:39:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:39:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:39:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:39:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:39:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:39:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:39:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:39:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:39:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:39:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:39:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:39:47+06:00"}
+{"latency":3468191400,"level":"info","method":"POST","msg":"request processed","path":"/api/signup","status":200,"time":"2024-03-01T15:40:07+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:42:01+06:00"}
+{"latency":997400,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:42:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:42:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:42:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:42:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:42:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:42:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:42:07+06:00"}
+{"latency":3116839300,"level":"info","method":"POST","msg":"request processed","path":"/api/signup","status":200,"time":"2024-03-01T15:42:22+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:45:27+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:45:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:45:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:45:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:45:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:45:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:45:42+06:00"}
+{"latency":161365600,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T15:45:49+06:00"}
+{"latency":11687400,"level":"info","method":"GET","msg":"request processed","path":"/api/books","status":200,"time":"2024-03-01T15:45:50+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:50:34+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:53:59+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:54:06+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:54:06+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:54:06+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:54:06+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:54:06+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:54:06+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:54:06+06:00"}
+{"latency":2635756000,"level":"info","method":"POST","msg":"request processed","path":"/api/signup","status":200,"time":"2024-03-01T15:54:29+06:00"}
+{"latency":27841600,"level":"info","method":"GET","msg":"request processed","path":"/api/books","status":200,"time":"2024-03-01T15:54:30+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:54:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:54:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:54:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:54:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:54:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:54:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:54:42+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:55:23+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T15:59:33+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:59:41+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:59:41+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:59:41+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:59:41+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:59:41+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:59:41+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T15:59:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T15:59:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T15:59:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T15:59:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T15:59:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T15:59:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T15:59:47+06:00"}
+{"latency":2438346400,"level":"info","method":"POST","msg":"request processed","path":"/api/signup","status":200,"time":"2024-03-01T16:00:05+06:00"}
+{"latency":22806700,"level":"info","method":"GET","msg":"request processed","path":"/api/books","status":200,"time":"2024-03-01T16:00:05+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:01:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:01:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:01:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:01:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:01:17+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T16:01:17+06:00"}
+{"latency":97683400,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:01:27+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/api/profile","status":401,"time":"2024-03-01T16:01:27+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:06:19+06:00"}
+{"latency":92813100,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:06:25+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/api/profile","status":401,"time":"2024-03-01T16:06:25+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T16:06:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:06:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:06:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:06:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:06:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:06:42+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T16:06:42+06:00"}
+{"latency":2463725200,"level":"info","method":"POST","msg":"request processed","path":"/api/signup","status":200,"time":"2024-03-01T16:07:07+06:00"}
+{"latency":8028100,"level":"info","method":"GET","msg":"request processed","path":"/api/books","status":200,"time":"2024-03-01T16:07:07+06:00"}
+{"latency":26187600,"level":"info","method":"GET","msg":"request processed","path":"/api/books","status":200,"time":"2024-03-01T16:07:23+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:07:40+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:07:40+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:07:40+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:07:40+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:07:40+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T16:07:40+06:00"}
+{"latency":95714800,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T16:07:47+06:00"}
+{"latency":93411500,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T16:07:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:07:59+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:07:59+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:07:59+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:07:59+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:07:59+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:08:48+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:08:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:08:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:08:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:08:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:08:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T16:08:55+06:00"}
+{"latency":108592000,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T16:09:02+06:00"}
+{"latency":77222500,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T16:09:02+06:00"}
+{"latency":100033100,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T16:09:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:09:09+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:09:09+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:09:09+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:09:09+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:09:09+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T16:09:20+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:10:23+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:10:27+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:10:27+06:00"}
+{"latency":1001000,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:10:27+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:10:27+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:10:27+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T16:10:27+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T16:10:29+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:10:29+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:10:29+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:10:29+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:10:29+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:10:29+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T16:10:29+06:00"}
+{"latency":2562516100,"level":"info","method":"POST","msg":"request processed","path":"/api/signup","status":200,"time":"2024-03-01T16:10:46+06:00"}
+{"latency":11790100,"level":"info","method":"GET","msg":"request processed","path":"/api/books","status":200,"time":"2024-03-01T16:10:46+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:10:49+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:10:49+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:10:49+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:10:49+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:10:49+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T16:10:49+06:00"}
+{"latency":100158200,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T16:10:57+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:11:04+06:00"}
+{"latency":511400,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:11:04+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:11:04+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:11:04+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:11:04+06:00"}
+{"latency":85441700,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T16:11:50+06:00"}
+{"latency":5061200,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":401,"time":"2024-03-01T16:12:13+06:00"}
+{"latency":82014800,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:12:19+06:00"}
+{"latency":94383800,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:12:33+06:00"}
+{"latency":1098600,"level":"info","method":"GET","msg":"request processed","path":"/api/books","status":200,"time":"2024-03-01T16:12:33+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:13:05+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:13:15+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:13:15+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:13:15+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:13:15+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:13:15+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T16:13:15+06:00"}
+{"latency":86259700,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:13:25+06:00"}
+{"latency":545700,"level":"info","method":"GET","msg":"request processed","path":"/profile","status":200,"time":"2024-03-01T16:13:25+06:00"}
+{"latency":93733100,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:14:36+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/profile","status":200,"time":"2024-03-01T16:14:36+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:14:47+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/sign-in.css","status":200,"time":"2024-03-01T16:14:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:14:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:14:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:14:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/scripts/magic-menu.js","status":200,"time":"2024-03-01T16:14:55+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/magic-menu.css","status":200,"time":"2024-03-01T16:14:55+06:00"}
+{"latency":105994700,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:15:02+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/profile","status":200,"time":"2024-03-01T16:15:02+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:16:01+06:00"}
+{"latency":104347700,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:16:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/custom.css","status":200,"time":"2024-03-01T16:16:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/headers.css","status":200,"time":"2024-03-01T16:16:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/customMenu.css","status":200,"time":"2024-03-01T16:16:07+06:00"}
+{"latency":0,"level":"info","method":"GET","msg":"request processed","path":"/css/bootstrap.min.css","status":200,"time":"2024-03-01T16:16:07+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:19:40+06:00"}
+{"latency":98119800,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:19:50+06:00"}
+{"latency":11436400,"level":"info","method":"GET","msg":"request processed","path":"/profile","status":200,"time":"2024-03-01T16:19:50+06:00"}
+{"latency":95065700,"level":"info","method":"POST","msg":"request processed","path":"/api/login","status":200,"time":"2024-03-01T16:19:59+06:00"}
+{"latency":13761300,"level":"info","method":"GET","msg":"request processed","path":"/profile","status":200,"time":"2024-03-01T16:19:59+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:40:32+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:40:55+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:41:30+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:42:14+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:42:37+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:43:17+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:43:29+06:00"}
+{"ctx":"LogrusToLogFile","level":"error","msg":"Write to file","time":"2024-03-01T16:43:42+06:00"}

@@ -5,18 +5,24 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/smtp"
 	"os"
+	"github.com/dgrijalva/jwt-go"
 	"os/signal"
+	"github.com/gofiber/template/html/v2"
 	"syscall"
 	"time"
+	"golang.org/x/crypto/bcrypt"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"strconv"
+	"golang.org/x/time/rate"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 	"github.com/yerlan/go-fiber-postgres/models"
 	"github.com/yerlan/go-fiber-postgres/storage"
 	"gorm.io/gorm"
+	"errors"
 )
 
 type Book struct {
@@ -29,12 +35,177 @@ type Book struct {
 type User struct {
 	Name  string `json:"name"`
 	Email string `json:"email"`
+	Role string `json:"role"`
+	Password string `json:"password"`
 	Age   int    `json:"age"`
 }
 
 type Repository struct {
 	DB     *gorm.DB
 	Logger *logrus.Logger
+	JWTSecret       string 
+   ProtectedResource func(r *Repository, context *fiber.Ctx) error
+}
+
+
+func (r *Repository) ProfileHandler(context *fiber.Ctx) error {
+    // Get the JWT token from the request
+    tokenString := context.Cookies("jwt")
+
+    if tokenString == "" {
+        // Redirect to login page if no token is found
+        return context.Redirect("/api/login")
+    }
+
+    // Parse the JWT token
+    token, err := jwt.ParseWithClaims(tokenString, &jwt.MapClaims{}, func(token *jwt.Token) (interface{}, error) {
+        return []byte(r.JWTSecret), nil
+    })
+
+    if err != nil || !token.Valid {
+        // Redirect to login page if the token is invalid
+        return context.Redirect("/api/login")
+    }
+
+    // Extract user information from the token claims
+    claims, ok := token.Claims.(*jwt.MapClaims)
+    if !ok {
+        return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to parse token claims"})
+    }
+
+    user := User{
+        Name:  (*claims)["name"].(string),
+        Email: (*claims)["email"].(string),
+        Role:  (*claims)["role"].(string),
+        // Add other user information as needed
+    }
+
+    // Render the profile page with user data using HTML template
+    return context.Render("profile", fiber.Map{"user": user})
+}
+
+
+
+
+func (r *Repository) ProtectedBooks(context *fiber.Ctx) error {
+	return context.Status(fiber.StatusOK).JSON(fiber.Map{"message": "Protected /books resource accessed"})
+ }
+
+func (r *Repository) Signup(context *fiber.Ctx) error {
+    user := User{}
+    if err := context.BodyParser(&user); err != nil {
+        return context.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid request body"})
+    }
+
+    hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+    if err != nil {
+        return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Error hashing password"})
+    }
+    user.Password = string(hashedPassword)
+
+    if err := r.DB.Create(&user).Error; err != nil {
+        return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Error creating user"})
+    }
+
+	if err := r.sendWelcomeEmail(user.Email); err != nil {
+        r.Logger.WithError(err).Error("Error sending welcome email")
+    }
+
+    return context.Status(fiber.StatusOK).JSON(fiber.Map{"message": "User created successfully"})
+}
+
+func (r *Repository) sendWelcomeEmail(toEmail string) error {
+    auth := smtp.PlainAuth(
+        "",
+        "egisbekovim0@gmail.com",
+		"bnku nhpu rmic xbkb",     
+        "smtp.gmail.com",
+    )
+
+    subject := "Welcome to Your App"
+    body := "Thank you for signing up! We're excited to have you on board."
+
+    msg := fmt.Sprintf("Subject: %s\n%s", subject, body)
+
+    err := smtp.SendMail(
+        "smtp.gmail.com:587",
+        auth,
+        "egisbekovim0@gmail.com",   // replace with your SMTP email
+        []string{toEmail},
+        []byte(msg),
+    )
+
+    return err
+}
+
+func (r *Repository) Login(context *fiber.Ctx) error {
+    loginRequest := new(struct {
+        Email    string `json:"email"`
+        Password string `json:"password"`
+    })
+
+    if err := context.BodyParser(loginRequest); err != nil {
+        return context.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid request body"})
+    }
+
+    user := User{}
+    if err := r.DB.Where("email = ?", loginRequest.Email).First(&user).Error; err != nil {
+        return context.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Invalid email or password"})
+    }
+
+    if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(loginRequest.Password)); err != nil {
+        return context.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Invalid email or password"})
+    }
+
+	token, err := GenerateJWT(&user)
+    if err != nil {
+        return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Error generating JWT"})
+    }
+
+
+	context.Cookie(&fiber.Cookie{
+        Name:  "jwt",
+        Value: token,
+    })
+
+
+    return context.Status(fiber.StatusOK).JSON(fiber.Map{"message": "Login successful"})
+}
+
+func GenerateJWT(user *User) (string, error) {
+    token := jwt.New(jwt.SigningMethodHS256)
+    claims := token.Claims.(jwt.MapClaims)
+    claims["email"] = user.Email
+	claims["name"] = user.Name
+	claims["role"] = user.Role
+
+    tokenString, err := token.SignedString([]byte("your-secret-key"))
+    if err != nil {
+        return "", err
+    }
+
+    return tokenString, nil
+}
+
+
+func Authenticate() fiber.Handler {
+    return func(c *fiber.Ctx) error {
+        token := c.Get("Authorization")
+        if token == "" {
+            return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Unauthorized"})
+        }
+
+        claims := jwt.MapClaims{}
+        _, err := jwt.ParseWithClaims(token, claims, func(token *jwt.Token) (interface{}, error) {
+            return []byte("your-secret-key"), nil
+        })
+
+        if err != nil {
+            return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Unauthorized"})
+        }
+
+        return c.Next()
+    }
 }
 
 func (r *Repository) CreateBook(context *fiber.Ctx) error {
@@ -139,8 +310,16 @@ func (r *Repository) DeleteUser(context *fiber.Ctx) error {
 
 
 const defaultPageSize = 5
+var limiter = rate.NewLimiter(1, 1)
 
 func (r *Repository) GetBooks(context *fiber.Ctx) error {
+	if !limiter.Allow() {
+		context.Status(http.StatusTooManyRequests).JSON(&fiber.Map{
+		  "message": "To Many Request",
+		})
+		return nil
+	  }
+
     page, err := strconv.Atoi(context.Query("page", "1"))
     if err != nil || page <= 0 {
         page = 1
@@ -187,6 +366,12 @@ func (r *Repository) GetBooks(context *fiber.Ctx) error {
 
 
 func (r *Repository) GetUsers(context *fiber.Ctx) error {
+	if !limiter.Allow() {
+		context.Status(http.StatusTooManyRequests).JSON(&fiber.Map{
+		  "message": "Too Many Requests",
+		})
+		return nil
+	}
 	userModels := &[]models.Users{}
 
 	err := r.DB.Preload("Books").Find(userModels).Error
@@ -354,7 +539,21 @@ func (r *Repository) SetupRoutes(app *fiber.App) {
 	api.Get("/users", r.GetUsers)
 	api.Put("/update_book/:id", r.UpdateBook)
 	api.Get("/get_books_by_user/:id", r.GetBooksByUserID)
+	api.Post("/signup", r.Signup)
+    api.Post("/login", r.Login)
+	app.Get("/profile", r.ProfileHandler)
+	protected := api.Use(Authenticate())
+
+	protected.Get("/books", r.ProtectedBooks)
 }
+var loge = logrus.New()
+
+func init() {
+
+	loge.SetFormatter(&logrus.JSONFormatter{})
+
+	loge.SetLevel(logrus.DebugLevel)
+  }
 
 func LoggerMiddleware(logger *logrus.Logger) fiber.Handler {
 	return func(c *fiber.Ctx) error {
@@ -362,7 +561,7 @@ func LoggerMiddleware(logger *logrus.Logger) fiber.Handler {
 		err := c.Next()
 		latency := time.Since(start)
 
-		logger.WithFields(logrus.Fields{
+		loge.WithFields(logrus.Fields{
 			"method":  c.Method(),
 			"path":    c.Path(),
 			"status":  c.Response().StatusCode(),
@@ -373,9 +572,24 @@ func LoggerMiddleware(logger *logrus.Logger) fiber.Handler {
 	}
 }
 
+
 func main() {
-	err := godotenv.Load(".env")
-	if err != nil {
+	ctx := "LogrusToLogFile"
+	loge.Out = os.Stdout
+	file, err := os.OpenFile("logrus.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err == nil {
+		loge.Out = file
+	   } else {
+		 loge.Info("Failed to log to file, using default stderr")
+	   }
+	err = errors.New("math: square root of negative number")
+	   if err != nil {
+		 loge.WithFields(logrus.Fields{
+		   "ctx": ctx,
+		 }).Error("Write to file")
+	   }
+	err1 := godotenv.Load(".env")
+	if err1 != nil {
 		log.Fatal(err)
 	}
 
@@ -405,17 +619,40 @@ func main() {
 	r := Repository{
 		DB:     db,
 		Logger: logger,
+		JWTSecret:       "your-secret-key", 
+		ProtectedResource: (*Repository).ProtectedBooks, 
 	}
 
+	engine := html.New("./views", ".html")
+
+
+  engine = html.NewFileSystem(http.Dir("./views"), ".html")
+
+  // Reload the templates on each render, good for development
+	engine.Reload(true)
+
+	// Debug will print each template that is parsed, good for debugging
+	engine.Debug(true) // Optional. Default: false
+
+	// Layout defines the variable name that is used to yield templates within layouts
+	engine.Layout("embed") 
+
+	engine.Delims("{{", "}}") 
+
 	app := fiber.New(fiber.Config{
+		Views: engine,
 		ReadTimeout: 3 * time.Second,
 	})
+
+
 	app.Use(cors.New(cors.Config{
         AllowOrigins: "*",
         AllowMethods: "GET,POST,PUT,DELETE",
         AllowHeaders: "Origin, Content-Type, Accept",
     }))
 	app.Static("/", "../frontend")
+	app.Static("/сss", "../frontend/css")
+	app.Static("/assets3", "../frontend/assets3")
 
 	app.Use(LoggerMiddleware(logger))
 	r.SetupRoutes(app)

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/headers.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/customMenu.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <section id="profile">
+    <header class="p-3 text-bg-dark">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li class="list active">
+              <a href="/">
+                  <span class="icon">
+                      <img src="../assets3/home.png" class="mb-3" width="30" height="30" alt="">
+                  </span>
+                  <span class="text">Home</span>
+              </a>
+          </li>
+          <li class="list">
+              <a href="/books">
+                  <span class="icon">
+                      <img src="../assets3/jogging.png" class="mb-3" width="30" height="30" alt="">
+                  </span>
+                  <span class="text">Books</span>
+              </a>
+          </li>
+          <li class="list">
+              <a href="/profile">
+                  <span class="icon">
+                      <img src="../assets3/exercise.png" class="mb-3" width="30" height="30" alt="">
+                  </span>
+                  <span class="text">Profile</span>
+              </a>
+          </li>
+          <li class="list">
+              <a href="/shop">
+                  <span class="icon">
+                      <img src="../assets3/store.png" class="mb-3" width="30" height="30" alt="">
+                  </span>
+                  <span class="text">Store</span>
+              </a>
+          </li>
+          <li class="list">
+            <a href="/stats">
+                <span class="icon">
+                  <img src="../assets3/heart-rate.png" class="mb-3" width="30" height="30" alt="">
+                </span>
+                <span class="text">Stats</span>
+            </a>
+          </li>
+          {{if eq user.Role "admin"}}
+                            <li class="list">
+                                <a href="/admin">
+                                    <span class="icon">
+                                        <img src="../assets3/adminka.png" class="mb-3" width="30" height="30" alt="">
+                                    </span>
+                                    <span class="text">Admin</span>
+                                </a>
+                            </li>
+           {{end}}
+
+              <li class="list">
+                <a href="/settings">
+                    <span class="icon">
+                        <img src="../assets3/settingsIcon.png" class="mb-3" width="30" height="30" alt="">
+                    </span>
+                    <span class="text">Settings</span>
+                </a>
+              </li>
+          </ul>
+  
+          <div class="text-end">
+            <a href="/login"><button type="button" class="custom-btn me-2">Login</button></a>
+            <a href="/register"><button type="button" class="custom-btn">Signup</button></a>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+   
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <h1 class="text-center text-glow">Profile</h1>
+            <hr>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title"><span id="username">Name: {{if user}} {{.Name}} {{else}} N/A {{end}}</span></h4>
+                <p class="card-text"><span id="email">Email: {{if user}} {{.Email}} {{else}} N/A {{end}}</span></p>
+                <p class="card-text"><span id="email">Role: {{if user}} {{.Role}} {{else}} N/A {{end}}</span></p>
+            </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  <section id="books">
+        <div class="container>">
+          <div class="row">
+            <div id="booksContainer">
+        
+            </div>
+          </div>
+        </div>
+
+  </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

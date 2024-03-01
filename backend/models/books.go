@@ -5,7 +5,7 @@ type Books struct {
 	Author    *string `json:"author"`
 	Title     *string `json:"title"`
 	Publisher *string `json:"publisher"`
-	UserID    uint   `json:"user_id" gorm:"index"` // Foreign key referencing Users table
+	UserID    uint   `json:"user_id" gorm:"index"` 
 	User      Users  `json:"user" gorm:"foreignKey:UserID"`
  }
 

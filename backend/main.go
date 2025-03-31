@@ -59,17 +59,14 @@ func (r *Repository) ProfileHandler(context *fiber.Ctx) error {
         return context.Redirect("/api/login")
     }
 
-    // Parse the JWT token
     token, err := jwt.ParseWithClaims(tokenString, &jwt.MapClaims{}, func(token *jwt.Token) (interface{}, error) {
         return []byte(r.JWTSecret), nil
     })
 
     if err != nil || !token.Valid {
-        // Redirect to login page if the token is invalid
         return context.Redirect("/api/login")
     }
 
-    // Extract user information from the token claims
     claims, ok := token.Claims.(*jwt.MapClaims)
     if !ok {
         return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to parse token claims"})
@@ -81,39 +78,29 @@ func (r *Repository) ProfileHandler(context *fiber.Ctx) error {
         Name:  (*claims)["name"].(string),
         Email: (*claims)["email"].(string),
         // Role:  (*claims)["role"].(string),
-        // Add other user information as needed
     }
 	fmt.Println(user)
 
-
-    // Render the profile page with user data using HTML template
     return context.Render("profile", fiber.Map{"user": user})
 }
 
 
 
 func (r *Repository) AdminHandler(context *fiber.Ctx) error {
-    // Check if the user is authenticated
- 
+
     users, err := r.GetAllUsers()
 	
     if err != nil {
         return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to fetch users"})
     }
-
-    // Render the admin page with the list of users
     return context.Render("admin", fiber.Map{"users": users})
 }
 
 func (r *Repository) GetAllUsers() ([]User, error) {
-    // Create a slice to store the users
     var users []User
-
-    // Use GORM's Find method to fetch all users
     if err := r.DB.Find(&users).Error; err != nil {
         return nil, err
     }
-
     return users, nil
 }
 
@@ -162,7 +149,7 @@ func (r *Repository) sendWelcomeEmail(toEmail string) error {
     err := smtp.SendMail(
         "smtp.gmail.com:587",
         auth,
-        "egisbekovim0@gmail.com",   // replace with your SMTP email
+        "egisbekovim0@gmail.com",   
         []string{toEmail},
         []byte(msg),
     )
@@ -212,12 +199,10 @@ func (r *Repository) Login(context *fiber.Ctx) error {
         return context.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Error generating JWT"})
     }
 
-
 	context.Cookie(&fiber.Cookie{
         Name:  "jwt",
         Value: token,
     })
-
 
     return context.Status(fiber.StatusOK).JSON(fiber.Map{"message": "Login successful"})
 }
@@ -677,13 +662,10 @@ func main() {
 
 	engine := html.NewFileSystem(http.Dir("../frontend"), ".html")
 
-  // Reload the templates on each render, good for development
 	engine.Reload(true)
 
-	// Debug will print each template that is parsed, good for debugging
-	engine.Debug(true) // Optional. Default: false
+	engine.Debug(true)
 
-	// Layout defines the variable name that is used to yield templates within layouts
 	engine.Layout("embed") 
 
 	engine.Delims("{{", "}}") 

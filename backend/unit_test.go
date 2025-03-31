@@ -15,5 +15,5 @@ func TestGenerateJWT(t *testing.T) {
   if tokenString == "" {
     t.Fatalf("Expected token to be generated, got empty string")
   }
-  // Further tests could decode the token and check if the claims are correct.
+
 }
